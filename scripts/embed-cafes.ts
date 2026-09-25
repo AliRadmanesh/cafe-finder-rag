@@ -1,13 +1,6 @@
 import { embedMany } from "ai";
 import { embeddingModel } from "../src/model";
-
-interface Cafe {
-  id: string;
-  name: string;
-  neighborhood: string;
-  address: string;
-  description: string;
-}
+import type { Cafe } from "../src/types";
 
 const cafes: Cafe[] = await Bun.file("data/cafes.json").json();
 

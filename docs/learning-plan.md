@@ -31,7 +31,7 @@ the raw `openai` package — see `docs/design.md`'s "Stack" section for why.
       over every cafe in one call, write `data/cafes.embeddings.json`. Run
       it, inspect the output. _Concept: precomputing a vector index instead
       of a live DB._
-- [ ] **Step 6 — The `search_cafes` tool.** `src/tools/search-cafes.ts`:
+- [x] **Step 6 — The `search_cafes` tool.** `src/tools/search-cafes.ts`:
       `tool()` + Zod schema, `embed()` the query, rank with the built-in
       `cosineSimilarity()`, return top-k; export the `tools` object.
       _Concept: retrieval step of RAG end to end, AI SDK tool definitions._
@@ -56,3 +56,4 @@ the raw `openai` package — see `docs/design.md`'s "Stack" section for why.
 - 2026-09-25 — Step 4 finding: text-embedding-3-small failed cross-language (EN vs FA) check; compared 6 models, switched to baai/bge-m3. Write-up in docs/findings/embedding-model-comparison.md.
 - 2026-09-25 — Step 4 done. bge-m3: 1024 dims, EN/FA same-meaning 0.928 vs unrelated 0.538.
 - 2026-09-25 — Step 5 done. 25 vectors x 1024 dims in data/cafes.embeddings.json (531K, 2056 tokens).
+- 2026-09-25 — Step 6 done. Retrieval sensible on 4 queries; noted cafe-nadir missing from top 3 for a history query (eval candidate).
