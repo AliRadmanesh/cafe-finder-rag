@@ -17,14 +17,14 @@ the raw `openai` package — see `docs/design.md`'s "Stack" section for why.
 - [x] **Step 1 — Project setup.** `bun init`, install `ai`, `@ai-sdk/openai`,
       `zod`, `dotenv`; folder skeleton, `.gitignore`, `tsconfig`. _Concept:
       project scaffolding for a Bun/TS CLI tool._
-- [ ] **Step 2 — Env + connectivity check.** `.env` with the OpenRouter vars,
+- [x] **Step 2 — Env + connectivity check.** `.env` with the OpenRouter vars,
       `src/model.ts` (the `createOpenAI` provider setup), a tiny script that
       makes one `generateText` call and prints the response. _Concept:
       OpenRouter as an OpenAI-compatible endpoint, AI SDK provider objects._
-- [ ] **Step 3 — Seed data.** Review `data/cafes.json` (Tehran cafes,
+- [x] **Step 3 — Seed data.** Review `data/cafes.json` (Tehran cafes,
       provided as data rather than typed by hand). _Concept: what a
       retrieval corpus looks like before it's embedded._
-- [ ] **Step 4 — Embeddings sanity check.** A tiny script using `embed()` on
+- [x] **Step 4 — Embeddings sanity check.** A tiny script using `embed()` on
       one string, print the vector's shape. _Concept: what an embedding
       actually is, the AI SDK's `embed()` shape._
 - [ ] **Step 5 — Full embed script.** `scripts/embed-cafes.ts`: `embedMany()`
@@ -51,3 +51,7 @@ the raw `openai` package — see `docs/design.md`'s "Stack" section for why.
 
 (filled in as we go — one line per completed step, date + anything notable)
 - 2026-09-24 — Step 1 done. Installed ai@7.0.113, @ai-sdk/openai@4.0.74, zod@4.6.5. `bun init` generated its own .gitignore (already covers .env).
+- 2026-09-24 — Step 2 done. ping.ts returned a Persian greeting via OpenRouter (gpt-4.1-nano, 20 tokens). .env.example committed; .env gitignored.
+- 2026-09-24 — Step 3 done. 25 real Tehran cafes, Persian descriptions. Schema slimmed to id/name/neighborhood/address/description (dropped tags/goodFor/priceRange so retrieval does the inferring).
+- 2026-09-25 — Step 4 finding: text-embedding-3-small failed cross-language (EN vs FA) check; compared 6 models, switched to baai/bge-m3. Write-up in docs/findings/embedding-model-comparison.md.
+- 2026-09-25 — Step 4 done. bge-m3: 1024 dims, EN/FA same-meaning 0.928 vs unrelated 0.538.

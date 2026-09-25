@@ -12,4 +12,6 @@ const openai = createOpenAI({
 });
 
 export const chatModel = openai(requireEnv("OPENROUTER_MODEL"));
-export const embeddingModel = openai(requireEnv("OPENROUTER_EMBEDDING_MODEL"));
+export const embeddingModel = openai.embedding(
+  requireEnv("OPENROUTER_EMBEDDING_MODEL"),
+);
