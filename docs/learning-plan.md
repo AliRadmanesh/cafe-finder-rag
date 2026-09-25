@@ -27,7 +27,7 @@ the raw `openai` package — see `docs/design.md`'s "Stack" section for why.
 - [x] **Step 4 — Embeddings sanity check.** A tiny script using `embed()` on
       one string, print the vector's shape. _Concept: what an embedding
       actually is, the AI SDK's `embed()` shape._
-- [ ] **Step 5 — Full embed script.** `scripts/embed-cafes.ts`: `embedMany()`
+- [x] **Step 5 — Full embed script.** `scripts/embed-cafes.ts`: `embedMany()`
       over every cafe in one call, write `data/cafes.embeddings.json`. Run
       it, inspect the output. _Concept: precomputing a vector index instead
       of a live DB._
@@ -55,3 +55,4 @@ the raw `openai` package — see `docs/design.md`'s "Stack" section for why.
 - 2026-09-24 — Step 3 done. 25 real Tehran cafes, Persian descriptions. Schema slimmed to id/name/neighborhood/address/description (dropped tags/goodFor/priceRange so retrieval does the inferring).
 - 2026-09-25 — Step 4 finding: text-embedding-3-small failed cross-language (EN vs FA) check; compared 6 models, switched to baai/bge-m3. Write-up in docs/findings/embedding-model-comparison.md.
 - 2026-09-25 — Step 4 done. bge-m3: 1024 dims, EN/FA same-meaning 0.928 vs unrelated 0.538.
+- 2026-09-25 — Step 5 done. 25 vectors x 1024 dims in data/cafes.embeddings.json (531K, 2056 tokens).
