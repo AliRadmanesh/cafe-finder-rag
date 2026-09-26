@@ -35,7 +35,7 @@ the raw `openai` package — see `docs/design.md`'s "Stack" section for why.
       `tool()` + Zod schema, `embed()` the query, rank with the built-in
       `cosineSimilarity()`, return top-k; export the `tools` object.
       _Concept: retrieval step of RAG end to end, AI SDK tool definitions._
-- [ ] **Step 7 — The tool-calling loop.** `src/loop.ts` (`runTurn`): one
+- [x] **Step 7 — The tool-calling loop.** `src/loop.ts` (`runTurn`): one
       `generateText` call with `tools` + `stopWhen: stepCountIs(N)` — the
       SDK runs the multi-step loop internally. _Concept: how AI SDK's
       built-in agent loop replaces the hand-rolled one in the raw-SDK
@@ -57,3 +57,4 @@ the raw `openai` package — see `docs/design.md`'s "Stack" section for why.
 - 2026-09-25 — Step 4 done. bge-m3: 1024 dims, EN/FA same-meaning 0.928 vs unrelated 0.538.
 - 2026-09-25 — Step 5 done. 25 vectors x 1024 dims in data/cafes.embeddings.json (531K, 2056 tokens).
 - 2026-09-25 — Step 6 done. Retrieval sensible on 4 queries; noted cafe-nadir missing from top 3 for a history query (eval candidate).
+- 2026-09-26 — Step 7 done. runTurn works: model writes its own Persian search queries, skips tool for non-cafe questions, history threading via result.responseMessages resolves follow-ups.
